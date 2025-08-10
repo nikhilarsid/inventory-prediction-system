@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 import joblib
 from sqlalchemy import create_engine
 
-# --- 1. Load Data from Database ---
+
 DATABASE_URL = "sqlite:///inventory.db"
 try:
     engine = create_engine(DATABASE_URL)
@@ -19,13 +19,11 @@ except Exception as e:
     exit()
 
 
-# --- 2. Feature Engineering ---
-# This part remains the same
+
 df['date'] = pd.to_datetime(df['date'])
 df['day_of_year'] = df['date'].dt.dayofyear
 
-# --- 3. Prepare Data for Modeling ---
-# This part remains the same
+
 models = {}
 product_ids = df['product_id'].unique()
 
@@ -43,8 +41,8 @@ for product_id in product_ids:
     models[product_id] = model
     print(f"  - Model for product_id {product_id} trained.")
 
-# --- 5. Save the Models ---
-# This part remains the same
+
+
 model_filename = 'prediction_models.pkl'
 joblib.dump(models, model_filename)
 
