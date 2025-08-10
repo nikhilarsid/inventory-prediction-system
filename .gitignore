@@ -1,0 +1,11 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Database
+inventory.db
+
+# IDE / Editor specific
+.vscode/
+.idea/
